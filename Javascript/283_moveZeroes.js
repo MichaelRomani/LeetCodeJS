@@ -1,21 +1,9 @@
 var moveZeroes = function(arr) {
-  let trail = 0;
-
-  // Find left most zero
-  while (arr[trail] !== 0 && trail < arr.length) {
-    trail++;
+  if (!arr.length) return
+  let rIdx = wIdx = 0
+  while(rIdx < arr.length) {
+      if (arr[rIdx]) arr[wIdx++] = arr[rIdx]
+      rIdx++
   }
-
-  for (let i = trail + 1; i < arr.length; i++) {
-    if (arr[i] !== 0) {
-      swap(arr, i, trail);
-      trail++;
-    }
-  }
+  while(wIdx < arr.length) arr[wIdx++] = 0
 };
-
-function swap (array, i, j) {
-  let temp = array[i];
-  array[i] = array[j];
-  array[j] = temp;
-}
